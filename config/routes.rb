@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cities
+  resources :states
   get 'home/index'
 
   root 'home#index'
