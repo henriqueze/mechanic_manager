@@ -17,6 +17,7 @@ class CreatePeople < ActiveRecord::Migration[5.2]
       t.string :address_bairro
       t.bigint :address_zip
       t.string :status
+      t.references :cities, foreign_key: true
 
       t.timestamps
     end
