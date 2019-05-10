@@ -30,9 +30,8 @@ module MechanicManager
     config.generators.system_tests = nil
 
     config.generators do |g|
-  g.stylesheets false
-  scaffold_stylesheets false
-end
+        g.stylesheets false
+    end
 
   end
 end
