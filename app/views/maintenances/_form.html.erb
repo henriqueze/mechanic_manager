@@ -1,0 +1,47 @@
+<%= form_with(model: maintenance, local: true) do |form| %>
+  <% if maintenance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(maintenance.errors.count, "error") %> prohibited this maintenance from being saved:</h2>
+
+      <ul>
+      <% maintenance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :entrance_date %>
+    <%= form.date_select :entrance_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :exit_date %>
+    <%= form.date_select :exit_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :current_km %>
+    <%= form.text_field :current_km %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mo_value %>
+    <%= form.text_field :mo_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parts_value %>
+    <%= form.text_field :parts_value %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

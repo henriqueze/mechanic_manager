@@ -28,7 +28,11 @@ module MechanicManager
     # the framework and any gems in your application.
     # Don't generate system test files.
     config.generators.system_tests = nil
-    #no css scaffold
-    config.generators.scaffold_stylesheet false
+
+    config.generators do |g|
+  g.stylesheets false
+  scaffold_stylesheets false
+end
+
   end
 end
