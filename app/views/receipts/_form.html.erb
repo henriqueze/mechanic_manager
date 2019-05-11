@@ -1,0 +1,62 @@
+<%= form_with(model: receipt, local: true) do |form| %>
+  <% if receipt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(receipt.errors.count, "error") %> prohibited this receipt from being saved:</h2>
+
+      <ul>
+      <% receipt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :receipt_date %>
+    <%= form.date_select :receipt_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_value %>
+    <%= form.text_field :total_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discount_value %>
+    <%= form.text_field :discount_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paid_value %>
+    <%= form.text_field :paid_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remaining_value %>
+    <%= form.text_field :remaining_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_type %>
+    <%= form.text_field :payment_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parcel_value %>
+    <%= form.text_field :parcel_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parcel_qtd %>
+    <%= form.number_field :parcel_qtd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :maintenances_id %>
+    <%= form.text_field :maintenances_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

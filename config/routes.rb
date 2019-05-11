@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :receipts
   resources :maintenances
   resources :vehicle_models
   resources :vehicle_brands

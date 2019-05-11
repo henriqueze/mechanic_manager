@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Receipt date:</strong>
+  <%= @receipt.receipt_date %>
+</p>
+
+<p>
+  <strong>Total value:</strong>
+  <%= @receipt.total_value %>
+</p>
+
+<p>
+  <strong>Discount value:</strong>
+  <%= @receipt.discount_value %>
+</p>
+
+<p>
+  <strong>Paid value:</strong>
+  <%= @receipt.paid_value %>
+</p>
+
+<p>
+  <strong>Remaining value:</strong>
+  <%= @receipt.remaining_value %>
+</p>
+
+<p>
+  <strong>Payment type:</strong>
+  <%= @receipt.payment_type %>
+</p>
+
+<p>
+  <strong>Parcel value:</strong>
+  <%= @receipt.parcel_value %>
+</p>
+
+<p>
+  <strong>Parcel qtd:</strong>
+  <%= @receipt.parcel_qtd %>
+</p>
+
+<p>
+  <strong>Maintenances:</strong>
+  <%= @receipt.maintenances %>
+</p>
+
+<%= link_to 'Edit', edit_receipt_path(@receipt) %> |
+<%= link_to 'Back', receipts_path %>
