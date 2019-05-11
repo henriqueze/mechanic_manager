@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_153732) do
+ActiveRecord::Schema.define(version: 2019_05_11_040454) do
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 50
     t.bigint "states_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_153732) do
     t.date "entrance_date"
     t.date "exit_date"
     t.bigint "current_km"
-    t.string "description"
+    t.string "description", limit: 200
     t.float "mo_value"
     t.float "parts_value"
     t.datetime "created_at", null: false
@@ -32,45 +32,60 @@ ActiveRecord::Schema.define(version: 2019_05_10_153732) do
   end
 
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "kind"
-    t.string "name"
-    t.string "company_name"
+    t.string "kind", limit: 10
+    t.string "name", limit: 100
+    t.string "company_name", limit: 100
     t.bigint "ie"
     t.bigint "cnpj"
     t.bigint "rg"
     t.bigint "cpf"
     t.bigint "tel1"
     t.bigint "tel2"
-    t.string "email"
-    t.string "address"
-    t.string "address_number"
-    t.string "address_complement"
+    t.string "email", limit: 100
+    t.string "address", limit: 100
+    t.string "address_number", limit: 50
+    t.string "address_complement", limit: 100
     t.string "address_bairro"
     t.bigint "address_zip"
-    t.string "status"
+    t.string "status", limit: 7, default: "Ativo"
     t.bigint "cities_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cities_id"], name: "index_people_on_cities_id"
   end
 
+  create_table "receipts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "receipt_date"
+    t.float "total_value"
+    t.float "discount_value"
+    t.float "paid_value"
+    t.float "remaining_value"
+    t.float "payment_type"
+    t.float "parcel_value"
+    t.integer "parcel_qtd"
+    t.bigint "maintenances_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["maintenances_id"], name: "index_receipts_on_maintenances_id"
+  end
+
   create_table "states", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "uf"
+    t.string "name", limit: 50
+    t.string "uf", limit: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "vehicle_brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "vehicle_models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "version"
-    t.string "engine"
+    t.string "version", limit: 20
+    t.string "engine", limit: 50
     t.bigint "vehicle_brands_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,5 +94,6 @@ ActiveRecord::Schema.define(version: 2019_05_10_153732) do
 
   add_foreign_key "cities", "states", column: "states_id"
   add_foreign_key "people", "cities", column: "cities_id"
+  add_foreign_key "receipts", "maintenances", column: "maintenances_id"
   add_foreign_key "vehicle_models", "vehicle_brands", column: "vehicle_brands_id"
 end
