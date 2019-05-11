@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap', '~> 4.3.1' 
 #jquery
 gem 'jquery-rails'
-
+#mini racer
 #gem 'mini_racer'
 
 # Use CoffeeScript for .coffee assets and views
